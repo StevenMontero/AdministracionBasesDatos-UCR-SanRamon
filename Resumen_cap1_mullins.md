@@ -10,7 +10,8 @@ Los datos son lo más importante para las aplicaciones y las organizaciones mode
 
 ### Tecnología de bases de datos 
 El DBA es un profesional de las tecnologías de la información que comprende los detalles específicos de las tecnologías de bases de datos este conocimiento va mucho mas allá de saber solo sobre columnas, filas, tablas o SQL. No todos saben que es una base de datos de forma correcta y tienden a confundir DBMS como SQL server con una base de datos. Una base de datos es un almacén bien organizado de datos donde los elementos son nombrados para poder acceder a ellos cuando se desee. 
-![DBMS versus database](\NoteBooks\Imagenes\Annotation 2020-03-09 232642.jpg)
+
+![DBMS versus database](https://github.com/StevenMontero/AdministracionBasesDatos-UCR-SanRamon/blob/master/Imagenes/Annotation%202020-03-09%20232642.jpg)
 
 
 
