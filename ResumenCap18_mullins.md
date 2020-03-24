@@ -124,6 +124,16 @@ NAS, se refiere al almacenamiento al que se puede acceder directamente desde la 
 
 La diferencia con las NAS es que su capacidad de almacenamiento es menor y tiene menor rendimiento que las SAN, NAS es más adecuado para resolver problemas de almacenamiento multimedia, problemas de intercambio de datos e intercambio de almacenamiento para sistemas más pequeños.
 
+
+**Nota: Caracteristicas**
+NAS tiene diferentes apps que le permiten ver direcctorios y sub direcctorios , no recomendada para gran volumen de datos.
+SAN se conecta por fibra, se usa para gran volumen de datos y gran rendiminto.
+En las dos es posible hacer reparaciones sin nesecidad de apagar el servidor.
+Son equipos muy costos los dos.
+Ayadan a minimizar la perdida de datos.
+Permiten el crecimiento escalonado.
+Permiten rapido acceso sin bajar el rendimiento o la calidad del acceso de la data
+
 **Almacenamiento escalonado o niveles**
 
 Se asignan diferentes categorías de datos para diferentes tipos de medios de almacenamiento. Esta técnica despliega cuatro categorías: caliente, cálido, frío y latente. La temperatura de los datos se define como una función de la velocidad de acceso para consultas, actualizaciones y mantenimiento de datos, una vez clasificados sus dispositivos de almacenamiento para usar con cada temperatura de datos, las características varían al igual que los costos por ejemplo, caliente: los datos que requieren mucha E/S y requieren alta disponibilidad se pueden colocar en dispositivos de almacenamiento que ofrezcan alto rendimiento, fiabilidad, funciones avanzadas y gran capacidad, a diferencia de los datos latentes a los que no se ha accedido durante mucho tiempo (quizás años) y cuyo modelo de datos es estable, se puede mover a sistemas de almacenamiento fuera de línea como cinta inteligente o disco óptico.
