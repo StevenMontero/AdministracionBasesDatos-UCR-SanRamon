@@ -152,13 +152,81 @@ dos perspectivas diferentes: prevenir el almacenamiento de información personal
  **Una definición simple pero útil de privacidad es la capacidad de las personas para controlar los términos bajo los cuales se adquiere y utiliza su información personal.**
  
 ## Control de acceso discrecional basado sobre la concesión y revocación de privilegios 
+El método típico de imponer el control de acceso discrecional en un sistema de base de datos.Muchos DBMS relacionales actuales usan alguna variación de esta técnica. La idea principal es incluir declaraciones en el lenguaje de consulta que permitan el DBA y usuarios seleccionados para otorgar y revocar privilegios.
+
+### Tipos de privilegios discrecionales
+El identificador de autorización se utiliza para referirse, en términos generales, a una cuenta de usuario (o grupo de cuentas de usuario).El DBMS debe proporcionar acceso selectivo a cada relación en la base de datos en función de cuentas específicas. Las operaciones también pueden ser controladas; por lo tanto, tener una cuenta no necesariamente da derecho al titular de la cuenta a toda la funcionalidad proporcionada por el DBMS. 
+
+Informalmente, hay dos niveles para asignar privilegios para usar el sistema de base de datos:
+
+
+* El nivel de la cuenta. En este nivel, el DBA especifica los privilegios particulares que cada cuenta posee independientemente de las relaciones en la base de datos.
+
+* El nivel de relación (o tabla). En este nivel, el DBA puede controlar el privilegio de acceder a cada relación o vista individual en la base de datos.
+
+Los privilegios a nivel de cuenta se aplican a las capacidades proporcionadas a la misma cuenta y pueden incluir el privilegio CREATE SCHEMA o CREATE TABLE, para crear un esquema o una relación base; el privilegio CREATE VIEW; el privilegio ALTER, para aplicar cambios de esquema como agregar o eliminar atributos de las relaciones; el privilegio DROP, para eliminar relaciones o vistas; el privilegio MODIFICAR, para insertar, eliminar o actualizar tuplas; y el privilegio SELECT, para recuperar información de la base de datos mediante una consulta SELECT.
+
+El segundo nivel de privilegios se aplica al nivel de relación, que incluye la relación base
+relaciones y relaciones virtuales (vista). Los privilegios en el nivel de relación especifican para cada usuario las relaciones individuales en las que se puede aplicar cada tipo de comando. 
+Para controlar la concesión y revocación de privilegios de relación, cada relación R en un
+a la base de datos se le asigna una cuenta de propietario, que normalmente es la cuenta que se utilizó
+cuando la relación se creó en primer lugar.
+
+En SQL, los siguientes tipos de se pueden otorgar privilegios a cada relación individual R:
+
+* **Privilegio SELECT (recuperación o lectura)** le permite a la cuenta a cosultar datos de la DB.
+* **Privilegios de modificación en R** Esto le da a la cuenta la capacidad de modificar las tuplas de R. En SQL, esto incluye tres privilegios: ACTUALIZAR, ELIMINAR e INSERTAR.
+* **Privilegio de referencias en R** Esto le da a la cuenta la capacidad de referenciar
+(o consulte) una relación R al especificar restricciones de integridad.
+
+### Especificación de privilegios mediante el uso de vistas
+El mecanismo de puntos de vista es un mecanismo de autorización discrecional importante por derecho propio. Por ejemplo, si el propietario A de una relación R quiere que otra cuenta B pueda recuperar solo algunos campos de R, entonces A puede crear una vista V de R que incluya solo esos atributos y luego otorgar SELECT en V a B.
+
+### Revocación de privilegios
+En algunos casos, es conveniente otorgar un privilegio a un usuario temporalmente.Por lo tanto, se necesita un mecanismo para revocar privilegios. En SQL, se incluye un comando REVOKE con el propósito de cancelar privilegios. 
+
+### Propagación de privilegios utilizando la opción GRANT
+Siempre que el propietario A de una relación R otorgue un privilegio sobre R a otra cuenta B,el privilegio se puede otorgar a B con o sin la OPCIÓN DE CONCESIÓN. GRANT OPTION significa que B también puede otorgar ese privilegio sobre R a otro
+cuentas 
+
+### Especificación de límites en la propagación de privilegios
+Se han desarrollado técnicas para limitar la propagación de privilegios, aunque aún no se han implementado en la mayoría de los DBMS y no forman parte de SQL.
+
+Limitar la propagación **horizontal** a un número entero i significa que una cuenta B dada la OPCIÓN DE OTORGAMIENTO puede otorgar el privilegio a como máximo i cuentas.
+
+La propagación **vertical** es más complicada; limita la profundidad de la concesión de privilegios. Otorgar un privilegio con una propagación vertical de cero es equivalente a otorgar el privilegio sin OPCIÓN DE CONCESIÓN. Si la cuenta A otorga un privilegio a la cuenta B con la propagación vertical establecida en un número entero j> 0, esto significa que la cuenta B tiene la OPCIÓN DE CONCESIÓN en ese privilegio, pero B puede otorgar el
+privilegio a otras cuentas solo con una propagación vertical menor que j. 
+
+## Control de acceso obligatorio y basado en roles de control de acceso para seguridad multinivel
+Las clases de seguridad típicas son secreto superior (TS), secreto (S), confidencial (C) y no clasificado (U), donde TS es el nivel más alto y U el más bajo. El modelo usado comúnmente para seguridad multinivel, conocido como el modelo Bell-LaPadula.
+
+Se aplican dos restricciones al acceso a los datos en función de las clasificaciones de sujeto / objeto:
+
+1. Un sujeto S no tiene acceso de lectura a un objeto O a menos que la clase (S) ≥ clase (O). Esto se conoce como la propiedad de seguridad simple.
+2. Un sujeto S no puede escribir un objeto O a menos que clase (S) ≤ clase (O). Esto se conoce como la propiedad estrella (o propiedad *).
+
+### Comparing Discretionary Access Control and Mandatory Access Control
+Las políticas obligatorias aseguran un alto grado de protección de una manera, evitan cualquier flujo ilegal de información. Por lo tanto, son adecuados para tipos de aplicaciones militares y de alta seguridad, que requieren un mayor grado de protección. Sin embargo, las políticas obligatorias tienen el inconveniente de ser demasiado rígidas, ya que requieren una clasificación estricta de sujetos y objetos en niveles de seguridad y, por lo tanto, son aplicables a pocos entornos y colocan una carga adicional.
+La jerarquía de roles se puede implementar de la siguiente manera:
+<code>GRANT ROLE full_time TO employee_type1
+<code>GRANT ROLE intern TO employee_type2
+
+### Control de acceso basado en roles
+El control de acceso basado en roles (RBAC) surgió rápidamente en la década de 1990 como una tecnología comprobada para administrar y hacer cumplir la seguridad en sistemas empresariales a gran escala.
+Los roles se pueden crear utilizando CREATE ROLE y DESTROY ROLE.Los comandos GRANT y REVOKE se puede utilizar para asignar y revocar privilegios de roles.RBAC puede usarse con controles de acceso discrecionales y obligatorios tradicionales.
+La jerarquía de roles en RBAC es una forma natural de organizar roles para reflejar la organización.
+En otras palabras, si un usuario tiene un rol, el usuario automáticamente tiene roles más bajos en la jerarquía. La definición de una jerarquía de roles implica elegir el tipo de jerarquía y los roles, y luego implementar la jerarquía otorgando roles a otros roles.
+
 
 
 **Seguridad basada en etiquetas y control de acceso a nivel de fila**
 
-En el control de acceso a nivel de fila, cada fila de datos recibe una etiqueta, que se usa para almacenar información sobre la sensibilidad de los datos. El control de acceso a nivel de fila proporciona mayor granularidad de seguridad de datos al permitir que se establezcan los permisos para cada fila y no solo para la tabla o columna. Cada usuario tiene una identidad en seguridad basada en etiquetas. La identidad de este usuario se compara con la etiqueta asignada a cada fila para determinar si el usuario tiene acceso para ver el contenido de esa fila.
+En el control de acceso a nivel de fila, cada fila de datos recibe una etiqueta, que se usa para almacenar información sobre la sensibilidad de los datos. El control de acceso a nivel de fila proporciona mayor granularidad de seguridad de datos al permitir que se establezcan los permisos para cada fila y no solo para la tabla o columna. Cada usuario tiene una identidad en seguridad basada en etiquetas. La identidad de este usuario se compara con la etiqueta asignada a cada fila para determinar si el usuario tiene acceso para ver el contenido de esa fila. Se pueden recibir privilegios de dos cuentas diferentes.
 
-Los requisitos de seguridad de la etiqueta se aplican sobre los requisitos de acceso de control discrecional para cada usuario, Por lo tanto, el usuario debe cumplir los requisitos de acceso de control discrecional y luego la etiqueta requisitos de seguridad para acceder a una fila.
+
+Los requisitos de seguridad de la etiqueta se aplican sobre los requisitos de acceso de control discrecional para cada usuario, Por lo tanto, el usuario debe cumplir los requisitos de acceso de control discrecional y luego la etiqueta requisitos de seguridad para acceder a una fila. i la cuenta de propietario A ahora revoca el privilegio otorgado a B, todos los privilegios que B propagó en función de ese privilegio deberían revocarse automáticamente por el sistema.
+
+
 
 **Control de acceso XML**
 
