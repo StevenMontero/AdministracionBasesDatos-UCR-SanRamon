@@ -208,7 +208,9 @@ Se aplican dos restricciones al acceso a los datos en función de las clasificac
 ### Comparing Discretionary Access Control and Mandatory Access Control
 Las políticas obligatorias aseguran un alto grado de protección de una manera, evitan cualquier flujo ilegal de información. Por lo tanto, son adecuados para tipos de aplicaciones militares y de alta seguridad, que requieren un mayor grado de protección. Sin embargo, las políticas obligatorias tienen el inconveniente de ser demasiado rígidas, ya que requieren una clasificación estricta de sujetos y objetos en niveles de seguridad y, por lo tanto, son aplicables a pocos entornos y colocan una carga adicional.
 La jerarquía de roles se puede implementar de la siguiente manera:
+
 <code>GRANT ROLE full_time TO employee_type1
+ 
 <code>GRANT ROLE intern TO employee_type2
 
 ### Control de acceso basado en roles
@@ -262,11 +264,13 @@ Estas técnicas se logran programando ciertas reglas a los métodos de acceso en
 **Enlazar variables (sentencias con parámetros).** Esta técnica consiste en armar las sentencias SQL con parámetros, estos parámetros son establecidos por el usuario.
 
  Ejemplo:
-<code>
+
 PreparedStatement stmt = conn.prepareStatement( “SELECT \* FROM EMPLOYEE WHERE EMPLOYEE\_ID=? AND PASSWORD=?”);
+ 
 stmt.setString(1, employee\_id);
+ 
 stmt.setString(2, password);
-<code>
+
 
 **Filtro de entrada (validación de entrada):** Esta técnica se puede utilizar para eliminar el escape de cadenas de caracteres de entrada utilizando la función Reemplazar SQL. Por ejemplo, la comilla simple delimitador (‘) se puede reemplazar por dos comillas simples (‘ ’). Los ataques de manipulación se pueden evitar utilizando esta técnica, ya que los personajes de escape se pueden usar para inyectar ataques de manipulación.
 
@@ -282,7 +286,7 @@ Las consultas permitas son las que contienen funciones como sum () count (), min
 
 Es posible inferir con algunas estadísticas, datos más específicos por eso, se deben aplicar técnicas, como si la consulta devuelve un numero muy pequeño de tuplas, o si la consulta se repite mucho con los mismos datos, se debería denegar, otra técnica es particionar los datos en la base de datos.
 
-**Introducción al flujo de control **
+**Introducción al flujo de control**
 
  Este mecanismo de control regula la distribución o flujo de información dentro de la base de datos, los usuario tienen una clasificación o nivel que les permite ya sea hacer lecturas, escrituras o ambas al mismo tiempo, el control de flujo regula quienes pueden solo escribir o leer, por ejemplo, una base de datos militar, un usuario consulta información, pero no se le permite escribir esa información a otra tabla donde tal vez otro usuario sin estos permisos tenga acceso a información confidencial.
 
@@ -328,13 +332,13 @@ Los algoritmos de clave pública se basan en funciones matemáticas en lugar de 
 
 Una firma digital es un ejemplo del uso de técnicas de cifrado para proporcionar autenticación de servicios en aplicaciones de comercio electrónico. Como una firma manuscrita, una firma digital es un medio para asociar una marca exclusiva de un individuo con un cuerpo del texto. La marca debe ser inolvidable, lo que significa que otros deberían poder verificar que la firma proviene del creador. Las firmas digitales deben ser diferentes por cada uso.
 
-Certificados digitales
+**Certificados digitales**
 
 Un certificado digital se utiliza para combinar el valor de una clave pública con la identidad de la persona o servicio que posee la clave privada correspondiente en un documento firmado digitalmente.
 
 La siguiente lista describe toda la información incluida en el certificado:
 
-**1. La información del propietario del certificado,** que está representada por un identificador único conocido como el nombre distinguido (DN) del propietario.
+1. La información del propietario del certificado que está representada por un identificador único conocido como el nombre distinguido (DN) del propietario.
 
 2. El certificado también incluye la **clave pública del propietario.**
 
@@ -344,7 +348,7 @@ La siguiente lista describe toda la información incluida en el certificado:
 
 5. La **información del identificador** del emisor se incluye en el certificado.
 
-6. Finalmente, se incluye **la firma digital de la CA** emisora ​​del certificado.
+6. Finalmente, se incluye **la firma digital de la CA** emisora del certificado.
 
 **Problemas de privacidad y preservación**
 
