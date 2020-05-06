@@ -16,7 +16,7 @@
 * Manuales de referencia, para todos sus productos y herramientas DBMS.
 * CDs que contienen demostraciones de productos, productos, documentos, presentaciones, etc. 
 Esto ayudará a los administradores de bases para determinar un curso de acción cuando se encuentran en un atasco. Pero también se requieren organización, previsión y preparación.
-####Automatizar 
+#### Automatizar 
 Cualquier cosa que haga, probablemente se puede hacer mejor por un ordenador si se programa adecuadamente. Al automatizar una tarea, se ahorrará un tiempo valioso para hacer frente a otros problemas. 
 Por otra parte, no reinventar la rueda. Alguien puede haber ya resuelto el problema que está intentando resolver. Busque los sitios web que permiten descargar y compartir secuencias de comandos. 
 #### No reinventar la rueda 
@@ -30,7 +30,7 @@ Por otra parte, no reinventar la rueda. Alguien puede haber ya resuelto el probl
 
 #### Críticas de viajeros
 * La transferencia de conocimiento es una parte importante de ser un buen administrador de base tanto la transferencia de su conocimiento a otros y participar en tener conocimiento de los demás transferido a usted. Cuanto más se aprende, más se debe compartir ese conocimiento con los demás.
-####Las asociaciones de los grupos principales de base de datos de los usuarios
+#### Las asociaciones de los grupos principales de base de datos de los usuarios
 * Existen asociaciones de grupos de usuarios para cada uno de los principales DBMS. Estas reuniones regionales proporcionan recursos para los usuarios de bases de datos y administradores de bases.
 * IDUG: International DB2 Grupo de usuarios www.idug.org 
 * IIUG: International Informix Grupo de usuarios www.iiug.org 
