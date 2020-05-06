@@ -1,9 +1,9 @@
 ### Reglas de  DBA
-*DBA debe ser armado con una actitud apropiada y conocimientos técnicos suficientes
+* DBA debe ser armado con una actitud apropiada y conocimientos técnicos suficientes
 #### Anotarlo todo 
 * Hay que asegurarse de documentar los procesos que se utilizan para resolver problemas y superar los desafíos, puede ser información muy valiosa para resolver problemas similares en el futuro, documentar las medidas adoptadas para superar los problemas pueden mejorar los esfuerzos de DBA posteriores y prevenir problemas en el futuro.
 #### Mantenerlo todo 
-*Es una buena práctica mantener todo lo que encuentra durante el curso de su trabajo, ser como una “rata”.
+* Es una buena práctica mantener todo lo que encuentra durante el curso de su trabajo, ser como una “rata”.
 *Manuales-viejos y nuevos, en línea e impresas.
  * Scripts.
  * Programas-rápido-fija programas, programas de muestra, etc.
@@ -29,7 +29,7 @@ Por otra parte, no reinventar la rueda. Alguien puede haber ya resuelto el probl
 * Se necesita un profesional calificado para construir las secuencias de comandos de copia de seguridad adecuadas, ejecutar de manera apropiada, y probar los archivos de copia de seguridad para la exactitud. Debido a que la base de datos está dañado, cualquier recuperación autogestionada que podría intentar automáticamente se vuelve sospechoso. Una vez más, necesitamos la sabiduría y el conocimiento de la DBA. Debido a que cada empresa es diferente, el DBMS deben ser personalizados utilizando parámetros de configuración.
 
 #### Críticas de viajeros
-*La transferencia de conocimiento es una parte importante de ser un buen administrador de base tanto la transferencia de su conocimiento a otros y participar en tener conocimiento de los demás transferido a usted. Cuanto más se aprende, más se debe compartir ese conocimiento con los demás.
+* La transferencia de conocimiento es una parte importante de ser un buen administrador de base tanto la transferencia de su conocimiento a otros y participar en tener conocimiento de los demás transferido a usted. Cuanto más se aprende, más se debe compartir ese conocimiento con los demás.
 ####Las asociaciones de los grupos principales de base de datos de los usuarios
 * Existen asociaciones de grupos de usuarios para cada uno de los principales DBMS. Estas reuniones regionales proporcionan recursos para los usuarios de bases de datos y administradores de bases.
 * IDUG: International DB2 Grupo de usuarios www.idug.org 
