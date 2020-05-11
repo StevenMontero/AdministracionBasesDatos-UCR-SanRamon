@@ -209,9 +209,9 @@ Se aplican dos restricciones al acceso a los datos en función de las clasificac
 Las políticas obligatorias aseguran un alto grado de protección de una manera, evitan cualquier flujo ilegal de información. Por lo tanto, son adecuados para tipos de aplicaciones militares y de alta seguridad, que requieren un mayor grado de protección. Sin embargo, las políticas obligatorias tienen el inconveniente de ser demasiado rígidas, ya que requieren una clasificación estricta de sujetos y objetos en niveles de seguridad y, por lo tanto, son aplicables a pocos entornos y colocan una carga adicional.
 La jerarquía de roles se puede implementar de la siguiente manera:
 
-<code>GRANT ROLE full_time TO employee_type1
+<code>GRANT ROLE full_time TO employee_type1</code>
  
-<code>GRANT ROLE intern TO employee_type2
+<code>GRANT ROLE intern TO employee_type2</code>
 
 ### Control de acceso basado en roles
 El control de acceso basado en roles (RBAC) surgió rápidamente en la década de 1990 como una tecnología comprobada para administrar y hacer cumplir la seguridad en sistemas empresariales a gran escala.
